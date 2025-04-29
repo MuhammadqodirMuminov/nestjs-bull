@@ -1,14 +1,14 @@
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AudioModule } from './audio/audio.module';
-import { PushModule } from './push/push.module';
-import { SmsModule } from './sms/sms.module';
-import { EmailModule } from './email/email.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
+    MongooseModule.forRoot('mongodb://mongodb:27017/nest'),
     BullModule.forRoot({
       connection: {
         host: 'redis',
@@ -16,9 +16,7 @@ import { EmailModule } from './email/email.module';
       },
     }),
     AudioModule,
-    PushModule,
-    SmsModule,
-    EmailModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
