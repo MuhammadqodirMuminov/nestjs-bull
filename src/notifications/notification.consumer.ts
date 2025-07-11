@@ -19,6 +19,7 @@ export class NotificationConsumer extends WorkerHost {
     try {
       await job.updateProgress(10); // Optional
 
+      for (let i = 0; i < 100_000; i++) {}
       const result =
         await this.notificationService.sendNotifToTg(notificationId);
 

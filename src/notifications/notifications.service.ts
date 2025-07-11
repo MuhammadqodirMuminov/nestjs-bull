@@ -45,6 +45,8 @@ export class NotificationsService {
       return false;
     }
 
+    console.log(notification);
+
     try {
       const apiRes = await fetch(
         `https://api.telegram.org/bot7565070738:AAG5KkeftUdks-98qJz_NpZdQlnMxgbPiyU/sendMessage`,
